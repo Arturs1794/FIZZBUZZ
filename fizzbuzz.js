@@ -1,98 +1,85 @@
-function FizzBuzzA(value1, value2){
-    let returnValue = "";
-    for(let i = 1;i <=100;i++){
-        if (i%value1 == 0 && i%value2 == 0){
-            returnValue += 'FizzBuzz ';      
-        } 
-        else if (i%value1 == 0) {
-            returnValue +='Fizz ';
-        }
-        else if (i%value2 == 0) {
-            returnValue +='Buzz ';
-        }
-        else {
-            returnValue += i + ' ';
-        }
-    }
-    return returnValue;
-}
-//Another way to follow DRY (don't repeat yourself)
-function FizzBuzzB(value1, value2){
-    let returnValue = "";
-    let Fizz = false;
-    let Buzz = false;
-    for (let i =1;i<=100;i++){
-        Fizz = i%value1 == 0;        
-        Buzz = i%value2 == 0;        
-        switch(true){
-            case Fizz && Buzz : {
-                returnValue += 'FizzBuzz '; 
-                break;
-            }
-            case Fizz: {
-                returnValue += 'Fizz '; 
-                break;
-            }
-            case Buzz: {
-                returnValue += 'Buzz '; 
-                break;
-            }
-            default : {
-                returnValue += i + ' '; 
-                break;
-            }
-        }
-        return returnValue;
-        }
+
+console.log('Script started');
+
+function innit () {
+    console.log('Adding listeners')
+    addListeners();
+    document.getElementById('elements');
     
+    var clearButton = document.getElementById('clear');
+    clearButton.addEventListener("click", onClickClear);
+   
+}
+
+
+
+function onClick() {
+    
+    console.log('Button hit');
+        for(let i = 1; i<101; i++){
+            const element = document.createElement('div');
+            element.className="element" + i;
+            elements.appendChild(element);
+                if (i % 3 ===0 && i % 5 === 0){
+                    element.setAttribute("id", "element" +i);
+                    element.setAttribute("class", "FizzBuzz");
+                    element.innerText="FizzBuzz " + i;
+                }
+                else if (i % 3 === 0 && i % 5 !== 0) {
+                    element.setAttribute("id", "element" +i);
+                    element.setAttribute("class", "Fizz");
+                    element.innerText="Fizz " + i;
+                    
+                }
+
+                else if (i % 5 === 0 && i % 3 !== 0){
+                    element.setAttribute("id", "element" +i);
+                    element.setAttribute("class", "Buzz");
+                    element.innerText="Buzz " + i;
+                    
+                }
+
+                else if (i % 3 !== 0 && i % 5 !== 0){
+                    element.setAttribute("id", "element" +i);
+                    element.setAttribute("class", "Empty");
+                    element.innerText=i;
+                    
+                }
+        }
+}
+
+function onClickClear () {
+    while (elements.firstChild) {
+        elements.removeChild(elements.firstChild);
     }
- //Not traditonal approach
-function FizzBuzzC(val1,val2){
-        let returnValue = "";
-        for(let i=1;i<=100;i++){
-            returnValue += ((i%val1==0 ? 'Fizz' : '') + (i%val2==0 ? 'Buzz' : '') || i) + ' ';
-        }
-        return returnValue;
+    console.log('Divs cleared');
 }
 
- //return an array of values instead of a string
-function FizzBuzzD(val1,val2){
-        let returnArray = [];
-        for(let i=1;i<=100;i++){
-            returnArray[i] = ((i%val1 == 0 ? 'Fizz' : '' ) + (i%val2 == 0 ? 'Buzz' : '') || i);                   
-        }
-        return returnArray;
+
+ function addListeners() {
+    const submit = document.getElementById('generate');
+    submit.onclick = onClick;
 }
 
-//Call and use it
-function buzzIt(){
-    let output = "";
-    let val1 = document.getElementById('Fizzvalue').value;
-    let val2 = document.getElementById('Buzzvalue').value;
-    output = FizzBuzzC(val1,val2);
-    document.getElementById('results').innerHTML = output;
-}
 
-//Call and use it output to a template
 function buzzItTemplate(){
-    //Grab our template from the HTML document
-    let output = [];
-    let headTemplate = document.getElementById('template-header');
-    let rowTemplate = document.getElementById('template-row-items');
-    
-    var templateHTML = rowTemplate.innerHTML;
-    var resultsHTML = headTemplate.innerHTML;
-    //Get the values we want to use
-    let val1 = document.getElementById('Fizzvalue').value;
-    let val2 = document.getElementById('Buzzvalue').value;
-    //Call our Fizz Buzz Function
-    output = FizzBuzzD(val1,val2);
-    for(i=1; i<output.length; i+=5){
-        resultsHTML += templateHTML.replace('{{val1}}', output[i])
-            .replace('{{val2}}', output[i + 1])
-            .replace('{{val3}}', output[i + 2])
-            .replace('{{val4}}', output[i + 3])
-            .replace('{{val5}}', output[i + 4]);
-    }
-    document.getElementById('results').innerHTML = resultsHTML;
+  
+  let output = [];
+  let headTemplate = document.getElementById('template-header');
+  let rowTemplate = document.getElementById('template-row-items');
+  
+  var templateHTML = rowTemplate.innerHTML;
+  var resultsHTML = headTemplate.innerHTML;
+ 
+  output = FizzBuzzD(val1,val2);
+  for(i=1; i<output.length; i+=5){
+      resultsHTML += templateHTML.replace('{{val1}}', output[i])
+          .replace('{{val2}}', output[i + 1])
+          .replace('{{val3}}', output[i + 2])
+          .replace('{{val4}}', output[i + 3])
+          .replace('{{val5}}', output[i + 4]);
+  }
+  document.getElementById('results').innerHTML = resultsHTML;
 }
+
+innit();
