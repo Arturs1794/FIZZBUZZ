@@ -57,12 +57,13 @@ input[type=number]{
     height:90px;
     margin:10px;
     color:white;
-    background-color: #67e940;
+    background-color:darkkhaki;
     border-radius:8px;
     border-style:solid;
     border-width:1px;
     border-color:#000;
     text-align:center;
+    
     
 }
 .Fizz {
@@ -71,12 +72,13 @@ input[type=number]{
     height:90px;
     margin:10px;
     color:white;
-    background-color: red;
+    background-color: orange;
     border-radius:8px;
     border-style:solid;
     border-width:1px;
     border-color:#000;
     text-align:center;
+    
 }
 
 .Buzz {
@@ -85,12 +87,13 @@ input[type=number]{
     height:90px;
     margin:10px;
     color:white;
-    background-color: #ebe72d;
+    background-color:darkslateblue;
     border-radius:8px;
     border-style:solid;
     border-width:1px;
     border-color:#000;
     text-align:center;
+    
 }
 
 .Empty {
@@ -99,10 +102,28 @@ input[type=number]{
     height:90px;
     margin:10px;
     color:white;
-    background-color:lightblue;
+    background-color:gray;
     border-radius:8px;
     border-style:solid;
     border-width:1px;
     border-color:#000;
     text-align:center;
+    
 }
+
+#generate { 
+    background-color: rgb(233, 144, 12);
+    border-radius: 8px;
+    padding: 10px;
+    color: white
+
+}
+
+#clear { 
+    background-color: rgb(233, 144, 12);
+    border-radius: 8px;
+    padding: 10px;
+    color: white
+
+}
+
